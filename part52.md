@@ -160,7 +160,7 @@ Especially for the classification part we need a lot of storage in order to stor
    Please store the second command somewhere temporarily on your laptop. You will have to execute it once all workers are active.  
    ![](./figures/active_worker.png)
    
-   All worker nodes must be active. Then you can open a new terminal in the research environment. You can then run the following commands.
+   All worker nodes must be active. Then you can open a new terminal in the research environment and run the following commands.
 
    ```
    cd ~/
@@ -171,6 +171,7 @@ Especially for the classification part we need a lot of storage in order to stor
    ``` 
  
    Run `sinfo` to verify that you have now three nodes in your cluster.
+   You can proceed as soon as the download in your other terminal window has finished.
 
 3. Install Java 
 
