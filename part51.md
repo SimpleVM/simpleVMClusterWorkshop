@@ -17,7 +17,7 @@ Next, you will configure a cluster and submit your tools to a SLURM job schedule
 3. The worker nodes will run the actual tools, so we need a flavor with more cores then the one
    that the master node is using. Furthermore, the worker nodes need more disk space since the tools save their intermediate results on the respective worker node. 
    That's why we have to select a flavor with an Ephemeral disk. Please select **de.NBI large + ephemeral** as flavor and start
-   three worker nodes by providing `3` as the worker count.
+   two worker nodes by providing `2` as the worker count.
    ![](./figures/batch_worker.png)
 
 4. Every cluster has a shared disk between all worker nodes and the master node. You can create a new volume for the cluster with 300 GB size. 
@@ -30,5 +30,4 @@ Next, you will configure a cluster and submit your tools to a SLURM job schedule
 
 6. You've just started your own cluster with a few clicks.
 
-
-Back to [Section 4](part4.md) | Next to [Section 5 (Part 2)](part52.md)
+Next to [Section 5 (Part 2)](part52.md)

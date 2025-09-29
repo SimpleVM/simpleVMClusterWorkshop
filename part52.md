@@ -4,7 +4,7 @@ In the previous part you found datasets that contain the **Staphylococcus Aureus
 In the second part of section 5 you will investigate your cluster setup and use the infrastructure
 for your computations. We will then use the cluster to assemble the metagenomes and try to bin the strains in order to analyze the genes.
 
-### 5.2 Investigate your cluster setup
+### 5.1 Investigate your cluster setup
 
 1. Click on the Clusters tab. After you have initiated the start-up of the cluster,
    you should have been automatically redirected there. Now click on the cluster to open the dropdown.
@@ -129,10 +129,10 @@ or are just in `idle` state and the column `NODELIST` which is just the name of 
    ```
    This will clean up your `/vol/spool/`-directory for the next steps. 
 
-### 5.3 Prepare the Metagenomics-Toolkit run  
+### 5.2 Prepare the Metagenomics-Toolkit run  
 
-The [Metagenomics-Toolkit](https://github.com/metagenomics/metagenomics-tk) will only run the steps quality control, assembly, binnning and classification.
-Internally is the Metagenomics-Toolkit workflow a Nextflow based workflow and Nextflow is also using commands like sbatch behind the scenes. 
+The [Metagenomics-Toolkit](https://github.com/metagenomics/metagenomics-tk) will only run the steps quality control, assembly, binnning and classification on the three
+detected datasets. Internally is the Metagenomics-Toolkit workflow a Nextflow based workflow and Nextflow is also using commands like sbatch behind the scenes. 
 Especially for the classification part we need a lot of storage in order to store the GTDB database.
 
 1. Create a database directory
@@ -141,11 +141,36 @@ Especially for the classification part we need a lot of storage in order to stor
    mkdir /vol/spool/database
    ```
 
-2. We need to download the GTDB database from our S3 storage. This time we will use another S3 tool called s5cmd which is pre-installed on the VM. This step will take up to 10 minutes.
+2. We need to download the GTDB database from our object storage storage. This time we will use another S3 tool called s5cmd which is pre-installed on the VM. The following command will take up to 10 minutes.
    ```
    s5cmd  --endpoint-url https://s3-int.bi.denbi.de  --no-sign-request cp --concurrency 28  s3://databases/gtdbtk_r226_v2_data/release* /vol/spool/database
    ```
-   While the command is running you could investigate the s5cmd parameters in a second terminal and also try to rerun the minio commands of [part 3](https://github.com/SimpleVM/simpleVMWorkshopGCB/blob/main/part3.md#32-interact-with-the-sra-mirror-and-search-for-more-datasets-to-analyze) (Step 6 and 7) with s5cmd. 
+   While the command is running you could add one additional worker node via the SimpleVM website.
+   On the website open the cluster tab and click on the "Scale Cluster up" button.
+   ![](./figures/cluster_scale_up.png)
+
+   On the opened modal specify that you want to add one worker node of the **de.NBI large + ephemeral** flavor.
+   ![](./figures/scale_up_modal.png)
+
+   The following modal will open once you confirm that you want to scale up the cluster:
+   ![](./figures/scaling_commands.png)
+
+   The first command will show you an SSH command that we will not use during the workshop, since we are using a research environment.
+   The second command should only be executed after all workers are active (see screenshot below). Three out of three workers must be active.
+   Please store the second command somewhere temporarily on your laptop. You will have to execute it once all workers are active.  
+   ![](./figures/active_worker.png)
+   
+   All worker nodes must be active. Then you can open a new terminal in the research environment. You can then run the following commands.
+
+   ```
+   cd ~/
+   ```
+   
+   ```
+   Now, execute the command that you have stored on your laptop. 
+   ``` 
+ 
+   Run `sinfo` to verify that you have now three nodes in your cluster.
 
 3. Install Java 
 
@@ -198,7 +223,7 @@ mkdir -p /vol/spool/.nextflow
 cp ~/.nextflow/scm /vol/spool/.nextflow
 ```
 
-### 5.4 Run the Toolkit
+### 5.3 Run the Toolkit
 
 1. Go to the shared directory:
    ```
