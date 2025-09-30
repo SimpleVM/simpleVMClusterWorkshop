@@ -92,8 +92,8 @@ or are just in `idle` state and the column `NODELIST` which is just the name of 
 8. One way to distribute jobs is to use so-called array jobs. With array jobs you specify how many times
    your script should be executed. Every time the script is executed, a number between 1 and the number of times
    you want the script to be executed is assigned to the script execution. The specific number is saved in a
-   variable (`SLURM_ARRAY_TASK_ID`). If you specify `--array=1-100` then your script is 100 times executed and
-   the `SLURM_ARRAY_TASK_ID` variable will get a value between 1 and 100. SLURM will distribute the
+   variable (`SLURM_ARRAY_TASK_ID`). If you specify `--array=1-50` then your script is 50 times executed and
+   the `SLURM_ARRAY_TASK_ID` variable will get a value between 1 and 50. SLURM will distribute the
    jobs on your cluster.
 
    Please fetch the modified script
@@ -122,7 +122,7 @@ or are just in `idle` state and the column `NODELIST` which is just the name of 
    sbatch --array=1-50 basic_array.sh
    ```
    
-   If you now check the `output_array` folder, you should see numbers from 0 to 100.
+   If you now check the `output_array` folder, you should see numbers from 0 to 50.
    ```
    ls output_array
    ```
