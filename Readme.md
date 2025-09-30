@@ -1,4 +1,4 @@
-# SimpleVM Workshop
+# SimpleVM Cluster Workshop
 
 This workshop demonstrates a typical workflow of a SimpleVM user.
 In this workshop your goal will be to identify pathogenic bacteria
