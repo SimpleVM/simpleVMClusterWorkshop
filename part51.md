@@ -28,12 +28,13 @@ Next, you will configure a cluster and submit your tools to a SLURM job schedule
 
 6. Every cluster has a shared disk between all worker nodes and the master node. You can create a new volume for the cluster with 300 GB size. 
    Don't forget to click on **Add Volume**.
+   ![](./figures/add_volume.png)
 
-7. Grant access to the workshop organizers.
+8. Grant access to the workshop organizers.
    This way the organizers get ssh access to your VM and can help you in case
    something does not work as expected.
    ![](figures/grantAccess.png)
 
-8. You've just started your own cluster with a few clicks.
+9. You've just started your own cluster with a few clicks.
 
 Next to [Section 5 (Part 2)](part52.md)
