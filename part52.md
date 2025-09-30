@@ -117,9 +117,9 @@ or are just in `idle` state and the column `NODELIST` which is just the name of 
    touch output_array/${SLURM_ARRAY_TASK_ID}
    ```
  
-   You can execute this script a 100 times with the following command 
+   You can execute this script a 50 times with the following command 
    ```
-   sbatch --array=1-100 basic_array.sh
+   sbatch --array=1-50 basic_array.sh
    ```
    
    If you now check the `output_array` folder, you should see numbers from 0 to 100.
