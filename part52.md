@@ -6,6 +6,9 @@ for your computations. We will then use the cluster to assemble the metagenomes 
 
 ### 5.1 Investigate your cluster setup
 
+> ⚠️ **Important:** Your **Cluster must have the status RUNNING** to perform the following steps.
+
+
 1. Click on the Clusters tab. After you have initiated the start-up of the cluster,
    you should have been automatically redirected there. Now click on the cluster to open the dropdown.
    Click on the Theia IDE URL which opens a new browser tab.
