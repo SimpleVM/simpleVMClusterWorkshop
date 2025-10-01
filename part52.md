@@ -121,8 +121,14 @@ or are just in `idle` state and the column `NODELIST` which is just the name of 
    ```
    sbatch --array=1-50 basic_array.sh
    ```
+   You could open a second terminal in Theia to check the progress using **squeue** and **watch**.
+   ```
+   watch 'squeue --format="%.18i %.90j %t %.6C %m %.10M %N"'
+   ```
+   Watch automatically gives you the output of a command at regular intervals. The default is 2 seconds.
+   You can leave the output of **watch** by pressing `CTRL + C`
    
-   If you now check the `output_array` folder, you should see numbers from 0 to 50.
+   If you check the `output_array` folder when the jobs are finished, you should see numbers from 0 to 50.
    ```
    ls output_array
    ```
